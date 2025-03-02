@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styled from "styled-components";
 import data from "../../data/index";
 const Title = styled.h2`
