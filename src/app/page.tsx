@@ -1,5 +1,7 @@
 "use client";
 import About from "../../components/about";
+import Experinace from "../../components/experiance";
+import Education from "../../components/education";
 import Header from "../../components/header";
 import Home from "../../components/home";
 import Skills from "../../components/skills";
@@ -12,6 +14,8 @@ export default function HomePage() {
       <Home />
       <About />
       <Skills />
+      <Education />
+      <Experinace />
     </>
   );
 }

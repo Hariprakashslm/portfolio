@@ -4,6 +4,11 @@ import { IUserProfile } from "../../interface";
 
 const HeaderSection = styled.header`
   padding: 34px;
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #a39797;
 `;
 const HeaderDivider = styled.div`
   display: flex;
@@ -18,8 +23,11 @@ const HeaderMenu = styled.div`
   display: flex;
   gap: 60px;
   font-size: 20px;
+`;
+
+const HederMenuItem = styled.div`
   opacity: 0.7;
-  :hover {
+  &:hover {
     opacity: 1;
   }
 `;
@@ -33,9 +41,11 @@ const Header = ({ data }: { data: IUserProfile }) => {
         <HeaderMenu>
           {data.menu.map((menu, index) => {
             return (
-              <StyledLink href={menu.linkTo} key={index}>
-                {menu.name}
-              </StyledLink>
+              <HederMenuItem>
+                <StyledLink href={menu.linkTo} key={index}>
+                  {menu.name}
+                </StyledLink>
+              </HederMenuItem>
             );
           })}
         </HeaderMenu>
