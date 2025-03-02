@@ -78,7 +78,7 @@ const Skills = () => {
           );
         })}
       </SkillsCartSection>
-      <TechFamilierTitle>Tech I'm familiar with</TechFamilierTitle>{" "}
+      <TechFamilierTitle>Tech I&apos;m familiar with</TechFamilierTitle>{" "}
       <TechFamilierContentSection>
         {techSkils.map((skill, index) => {
           return (
