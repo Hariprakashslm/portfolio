@@ -41,10 +41,8 @@ const Header = ({ data }: { data: IUserProfile }) => {
         <HeaderMenu>
           {data.menu.map((menu, index) => {
             return (
-              <HederMenuItem>
-                <StyledLink href={menu.linkTo} key={index}>
-                  {menu.name}
-                </StyledLink>
+              <HederMenuItem key={index}>
+                <StyledLink href={menu.linkTo}>{menu.name}</StyledLink>
               </HederMenuItem>
             );
           })}
