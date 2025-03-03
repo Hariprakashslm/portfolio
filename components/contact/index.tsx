@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import data from "../../data/index";
 import { RefObject } from "react";
 
 const ContactSection = styled.footer`
@@ -30,11 +29,10 @@ const Link = styled.a`
 `;
 
 const Contact = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
-  const about = data.about;
   return (
     <ContactSection id="contact" ref={sectionRef}>
       <Title>Contact</Title>
-      <Connect>Let's Connect Via</Connect>
+      <Connect>Let&aposs Connect Via</Connect>
       <LinkSection>
         <Link>E-Mail</Link>
         <Link>LinkedIn</Link>

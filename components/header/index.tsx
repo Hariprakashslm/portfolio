@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { IUserProfile } from "../../interface";
 import { Scrollspy } from "@makotot/ghostui";
-import { Ref, RefObject, useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 
 const HeaderSection = styled.nav`
   padding: 34px;
@@ -48,7 +48,7 @@ const Header = ({
     setIsClient(true);
   }, []);
 
-  const handleClick = (e: any, to: string) => {
+  const handleClick = (e: Event, to: string) => {
     e.preventDefault();
     document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
   };
