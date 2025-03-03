@@ -48,7 +48,7 @@ const Header = ({
     setIsClient(true);
   }, []);
 
-  const handleClick = (e: Event, to: string) => {
+  const handleClick = (e: MouseEvent, to: string) => {
     e.preventDefault();
     document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
   };
