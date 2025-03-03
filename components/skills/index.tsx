@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import data from "../../data/index";
-import Tooltip from "../tooltip";
+import { RefObject } from "react";
 const Title = styled.h2`
   font-size: 68px;
   color: #010b30;
@@ -10,7 +10,8 @@ const Title = styled.h2`
 `;
 const SkillsSection = styled.section`
   padding: 20px;
-  padding-top: 40px;
+  padding-top: 80px;
+  padding-bottom: 50px;
 `;
 
 const SkillsCartSection = styled.div`
@@ -62,11 +63,11 @@ const TechFamilierContent = styled.div`
     font-weight: 600;
   }
 `;
-const Skills = () => {
+const Skills = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
   const skills = data.skills;
   const techSkils = data.techSkils;
   return (
-    <SkillsSection>
+    <SkillsSection id="skills" ref={sectionRef}>
       <Title>Skills</Title>
       <SkillsCartSection>
         {skills.map((data, index) => {
@@ -83,13 +84,7 @@ const Skills = () => {
         {techSkils.map((skill, index) => {
           return (
             <div key={index}>
-              {!!skill?.describe ? (
-                <Tooltip text={skill?.describe}>
-                  <TechFamilierContent>{skill?.title}</TechFamilierContent>
-                </Tooltip>
-              ) : (
-                <TechFamilierContent>{skill?.title}</TechFamilierContent>
-              )}
+              {<TechFamilierContent>{skill?.title}</TechFamilierContent>}
             </div>
           );
         })}

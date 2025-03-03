@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import Title from "../title";
+import Link from "next/link";
+import { RefObject } from "react";
 
 const ContentSection = styled.div`
   margin: 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 `;
 const ContentItem = styled.div`
   margin: 20px;
@@ -37,6 +41,7 @@ const data = [
     location: "Bangalore, KA",
     role: "Senior Software Engineer",
     duration: "December 2021 - Present",
+    linkTo: "https://amt.in/",
     rolesAndResp: [
       "Facilitated client meetings to collect project requirements and relayed them clearly to the",
       "development team, ensuring accurate and efficient implementation ",
@@ -51,6 +56,7 @@ const data = [
     location: "Coimbatore, TN",
     role: "PHP Developer",
     duration: "July 2020 - November 2021 1.5 Year",
+    linkTo: "https://www.aitechindia.com/",
     rolesAndResp: [
       "Creating applications from scratch to end",
       "Handling multiple project development",
@@ -64,6 +70,7 @@ const data = [
     location: "Coimbatore, TN",
     role: "Software Engineer",
     duration: "May 2019 - June 2020 1 Year",
+    linkTo: "https://grsystems.co.in/",
     rolesAndResp: [
       "RESTful APIs that served data to our JavaScript front-end based on dynamically chosen user inputs",
       "Built the front-end logic with JavaScript frameworks ReactJS, and Angular. ",
@@ -73,17 +80,23 @@ const data = [
   },
 ];
 
-const Experinace = () => {
+const Experinace = ({
+  sectionRef,
+}: {
+  sectionRef: RefObject<HTMLDivElement>;
+}) => {
   return (
-    <ContentSection>
-      <Title>Experience</Title>
+    <ContentSection id="experiance" ref={sectionRef}>
+      <Title type="Dark">Experience</Title>
       {data.map((currentData, index) => {
         return (
           <ContentItem key={index}>
             <SubTitle>{currentData.role}</SubTitle>
             <RoleTitle>
-              {currentData.company}, {currentData.location} -{" "}
-              <Duration>{currentData.duration}</Duration>
+              <Link href={currentData.linkTo} target="_blank">
+                {currentData.company}, {currentData.location} -{" "}
+                <Duration>{currentData.duration}</Duration>
+              </Link>
             </RoleTitle>
             <ContentList>
               {currentData.rolesAndResp.map((conent, index) => {

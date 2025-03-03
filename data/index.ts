@@ -5,31 +5,32 @@ const headerData: IUserProfile = {
   menu: [
     {
       name: "Home",
-      linkTo: "#home",
+      linkTo: "home",
     },
     {
       name: "About",
-      linkTo: "#home",
+      linkTo: "about",
     },
     {
       name: "Skills",
-      linkTo: "#home",
+      linkTo: "skills",
+    },
+    {
+      name: "Education",
+      linkTo: "education",
     },
     {
       name: "Experience",
-      linkTo: "#home",
+      linkTo: "experiance",
     },
     {
       name: "Projects",
-      linkTo: "#home",
+      linkTo: "projects",
     },
-    {
-      name: "Achievements",
-      linkTo: "#home",
-    },
+
     {
       name: "Contact",
-      linkTo: "#home",
+      linkTo: "contact",
     },
   ],
 };
@@ -153,6 +154,30 @@ const techSkils = [
   },
   {
     title: "GIT",
+    describe: "",
+  },
+  {
+    title: "TailwindCSS",
+    describe: "",
+  },
+  {
+    title: "Redis",
+    describe: "",
+  },
+  {
+    title: "Storybook (With ReactJS)",
+    describe: "",
+  },
+  {
+    title: "Docker",
+    describe: "",
+  },
+  {
+    title: "MicroService",
+    describe: "",
+  },
+  {
+    title: "NX Generator",
     describe: "",
   },
 ];

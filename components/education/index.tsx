@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Title from "../title";
+import { RefObject } from "react";
 
 const ContentSection = styled.div`
   padding: 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   background-color: #f6f6f6;
 `;
 const ContentItem = styled.div`
@@ -31,9 +34,13 @@ const data = [
   },
 ];
 
-const Education = () => {
+const Education = ({
+  sectionRef,
+}: {
+  sectionRef: RefObject<HTMLDivElement>;
+}) => {
   return (
-    <ContentSection>
+    <ContentSection id="education" ref={sectionRef}>
       <Title>Education</Title>
       {data.map((currentData, index) => {
         return (

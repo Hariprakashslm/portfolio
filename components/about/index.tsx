@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import data from "../../data/index";
-const Title = styled.h2`
-  font-size: 68px;
-  color: #ffffff;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), 3px 5px 9px rgba(0, 0, 0, 0.3);
-  margin: 20px;
-`;
+import Title from "../title";
+import { RefObject } from "react";
+
 const AboutSection = styled.section`
   padding: 20px;
   padding-top: 40px;
@@ -56,13 +53,13 @@ const NavigationButton = styled.button`
   transition: 0.3s;
 `;
 
-const About = () => {
+const About = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
   const about = data.about;
   return (
-    <AboutSection>
+    <AboutSection id="about" ref={sectionRef}>
       <AboutDivider>
         <AboutContentDiv>
-          <Title>About</Title>
+          <Title type="white">About</Title>
           {about.map((aboutData, index) => {
             return (
               <AboutSubSectionDiv key={index}>

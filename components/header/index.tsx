@@ -1,8 +1,10 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { IUserProfile } from "../../interface";
+import { Scrollspy } from "@makotot/ghostui";
+import { Ref, RefObject, useEffect, useState } from "react";
 
-const HeaderSection = styled.header`
+const HeaderSection = styled.nav`
   padding: 34px;
   position: fixed;
   background-color: #fff;
@@ -25,29 +27,84 @@ const HeaderMenu = styled.div`
   font-size: 20px;
 `;
 
-const HederMenuItem = styled.div`
-  opacity: 0.7;
+const HederMenuItem = styled.div<{ type?: string }>`
+  ${(props) => (props.type === "active" ? "opacity: 1;" : "opacity: 0.7;")}
   &:hover {
     opacity: 1;
   }
 `;
 const StyledLink = styled(Link)``;
 
-const Header = ({ data }: { data: IUserProfile }) => {
+const Header = ({
+  data,
+  sectionRefs,
+}: {
+  data: IUserProfile;
+  sectionRefs: RefObject<Element>[];
+}) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleClick = (e: any, to: string) => {
+    e.preventDefault();
+    document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <HeaderSection>
-      <HeaderDivider>
-        <HeaderTitle>{data.title}</HeaderTitle>
-        <HeaderMenu>
-          {data.menu.map((menu, index) => {
+      {isClient && (
+        <Scrollspy offset={-500} sectionRefs={sectionRefs}>
+          {({ currentElementIndexInViewport }) => {
+            const progress =
+              ((currentElementIndexInViewport + 1) / sectionRefs.length) * 100;
             return (
-              <HederMenuItem key={index}>
-                <StyledLink href={menu.linkTo}>{menu.name}</StyledLink>
-              </HederMenuItem>
+              <>
+                <HeaderDivider>
+                  <HeaderTitle>{data.title}</HeaderTitle>
+
+                  <HeaderMenu>
+                    {data.menu.map((menu, index) => {
+                      return (
+                        <HederMenuItem
+                          key={index}
+                          type={
+                            currentElementIndexInViewport === index
+                              ? "active"
+                              : "inActive"
+                          }
+                        >
+                          <StyledLink
+                            href={`#${menu.linkTo}`}
+                            scroll={false}
+                            onClick={(e) => handleClick(e, menu.linkTo)}
+                          >
+                            {menu.name}
+                          </StyledLink>
+                        </HederMenuItem>
+                      );
+                    })}
+                  </HeaderMenu>
+                </HeaderDivider>
+                <div
+                  style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    height: "5px",
+                    width: `${progress}%`,
+                    backgroundColor: "blue",
+                    transition: "width 0.3s ease-out",
+                    zIndex: 9999,
+                  }}
+                />
+              </>
             );
-          })}
-        </HeaderMenu>
-      </HeaderDivider>
+          }}
+        </Scrollspy>
+      )}
     </HeaderSection>
   );
 };
