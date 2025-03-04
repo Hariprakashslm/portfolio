@@ -3,15 +3,16 @@ import styled from "styled-components";
 import Title from "../title";
 
 const BannerImage = styled.img`
-  width: 100%;
-  height: 100vh;
+  height: 350px;
   object-fit: cover;
 `;
 
 const BannerSection = styled.div`
   height: 100vh;
   display: flex;
-  aligh-items: center;
+  align-items: center;
+  // background-color: #26283d;
+  background: linear-gradient(to right, #26283d, #000);
 `;
 
 const BannerContentSection = styled.div`
@@ -28,6 +29,7 @@ const IamDiv = styled.div`
   font-size: 36px;
   font-weight: 600;
   margin-right: 20px;
+  color: #fda34c;
 `;
 const WelcomeTitle = styled(Title)``;
 const NameTitle = styled(Title)`
@@ -40,7 +42,7 @@ const RoleTitle = styled(Title)`
 const Home = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
   return (
     <BannerSection id="home" ref={sectionRef}>
-      <BannerImage src={"/plain-home-banner.png"} alt="Hariprakash" />
+      <BannerImage src={"/dev.jpg"} alt="Hariprakash" />
       <BannerContentSection>
         <BannerContent>
           <WelcomeTitle>Welcome</WelcomeTitle>
