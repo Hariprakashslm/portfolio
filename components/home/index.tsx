@@ -24,12 +24,6 @@ const BannerContentSection = styled.div`
 `;
 const BannerContent = styled.div``;
 
-const BannerContact = styled.div`
-  color: #fff;
-  border-left: #ffffff solid 5px;
-  height: 50vh;
-  padding-left: 20px;
-`;
 const IamDiv = styled.div`
   font-size: 36px;
   font-weight: 600;
