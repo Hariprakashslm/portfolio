@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import styled from 'styled-components';
-import { IUserProfile } from '../../interface';
-import { Scrollspy } from '@makotot/ghostui';
-import React, { RefObject, useEffect, useState } from 'react';
-import { PrismicRichText } from '@prismicio/react';
+import Link from "next/link";
+import styled from "styled-components";
+import { IUserProfile } from "../../interface";
+import { Scrollspy } from "@makotot/ghostui";
+import React, { RefObject, useEffect, useState } from "react";
+import { PrismicRichText } from "@prismicio/react";
 
 const HeaderSection = styled.nav<{ visible: string }>`
   padding: 34px;
@@ -35,7 +35,7 @@ const HeaderMenu = styled.div`
 `;
 
 const HederMenuItem = styled.div<{ type?: string }>`
-  ${(props) => (props.type === 'active' ? 'opacity: 1;' : 'opacity: 0.7;')}
+  ${(props) => (props.type === "active" ? "opacity: 1;" : "opacity: 0.7;")}
   &:hover {
     opacity: 1;
   }
@@ -68,9 +68,8 @@ const Header = ({
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     e.preventDefault();
-    document.getElementById(to)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
   };
-  console.log({ headerData: data });
   return (
     <HeaderSection visible={showHeader ? "show" : "hide"}>
       {isClient && (
@@ -96,8 +95,8 @@ const Header = ({
                           key={index}
                           type={
                             currentElementIndexInViewport === index
-                              ? 'active'
-                              : 'inActive'
+                              ? "active"
+                              : "inActive"
                           }
                         >
                           <StyledLink
@@ -114,13 +113,13 @@ const Header = ({
                 </HeaderDivider>
                 <div
                   style={{
-                    position: 'fixed',
+                    position: "fixed",
                     top: 0,
                     left: 0,
-                    height: '5px',
+                    height: "5px",
                     width: `${progress}%`,
-                    backgroundColor: 'blue',
-                    transition: 'width 0.3s ease-out',
+                    backgroundColor: "blue",
+                    transition: "width 0.3s ease-out",
                     zIndex: 9999,
                   }}
                 />

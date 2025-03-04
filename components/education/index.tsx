@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Title from "../title";
 import { RefObject } from "react";
+import { PrismicRichText } from "@prismicio/react";
 
 const ContentSection = styled.div`
   padding: 20px;
@@ -19,36 +20,37 @@ const SubTitle = styled.h4`
   margin-bottom: 20px;
   font-size: 26px;
 `;
-const data = [
-  {
-    title: "Bachelor's Degree in Electorics and Communication Engieering",
-    contents: ["Sona College of Technologies", "CGPA - 6.83", "2014 - 2018"],
-  },
-  {
-    title: "High School, Sri Jothi Higher Secondary School",
-    contents: ["Scored 86%", "2014"],
-  },
-  {
-    title: "Secondary School, V.C  Higher Secondary School",
-    contents: ["Scored 78%", "2012"],
-  },
-];
 
 const Education = ({
   sectionRef,
+  data,
 }: {
   sectionRef: RefObject<HTMLDivElement>;
+  data: any;
 }) => {
   return (
     <ContentSection id="education" ref={sectionRef}>
-      <Title>Education</Title>
-      {data.map((currentData, index) => {
+      <PrismicRichText
+        field={data.education_title}
+        components={{
+          heading3: (data) => <Title>{data.children}</Title>,
+        }}
+      />
+      {data.education_group.map((currentData, index) => {
         return (
           <ContentItem key={index}>
-            <SubTitle>{currentData.title}</SubTitle>
-            {currentData.contents.map((conent, index) => {
-              return <Content key={index}>{conent}</Content>;
-            })}
+            <PrismicRichText
+              field={currentData.sub_title}
+              components={{
+                heading6: (data) => <SubTitle>{data.children}</SubTitle>,
+              }}
+            />
+            <PrismicRichText
+              field={currentData.description}
+              components={{
+                paragraph: (data) => <Content>{data.children}</Content>,
+              }}
+            />
           </ContentItem>
         );
       })}

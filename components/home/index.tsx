@@ -17,10 +17,10 @@ const BannerSection = styled.div`
 const BannerContentSection = styled.div`
   position: absolute;
   display: flex;
-  width: 70hw;
   align-items: center;
   height: 100vh;
-  text-align: right;
+  text-align: center;
+  right: 10%;
 `;
 const BannerContent = styled.div``;
 
@@ -30,20 +30,32 @@ const BannerContact = styled.div`
   height: 50vh;
   padding-left: 20px;
 `;
-const IamDiv = styled.div``;
+const IamDiv = styled.div`
+  font-size: 36px;
+  font-weight: 600;
+  margin-right: 20px;
+`;
+const WelcomeTitle = styled(Title)``;
+const NameTitle = styled(Title)`
+  font-size: 50px;
+`;
+const RoleTitle = styled(Title)`
+  font-size: 50px;
+  text-transform: none;
+`;
 const Home = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
   return (
     <BannerSection id="home" ref={sectionRef}>
       <BannerImage src={"/plain-home-banner.png"} alt="Hariprakash" />
       <BannerContentSection>
         <BannerContent>
-          <Title>Welcome</Title>
+          <WelcomeTitle>Welcome</WelcomeTitle>
           <IamDiv>I AM</IamDiv>
 
-          <Title>Hari Prakash</Title>
-          <Title>Senior Software Engineer</Title>
+          <NameTitle>Hari Prakash</NameTitle>
+          <RoleTitle>Senior Software Engineer</RoleTitle>
         </BannerContent>
-        <BannerContact>Test</BannerContact>
+        {/* <BannerContact>Test</BannerContact> */}
       </BannerContentSection>
     </BannerSection>
   );

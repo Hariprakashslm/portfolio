@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { RefObject } from "react";
+import { PrismicLink, PrismicRichText } from "@prismicio/react";
 
 const ContactSection = styled.footer`
   padding: 50px;
@@ -23,20 +24,45 @@ const LinkSection = styled.div`
   justify-content: end;
   gap: 20px;
 `;
-const Link = styled.a`
+const Link = styled.div`
   color: #ffffff;
-  font-size: 30px;
+  font-size: 25px;
 `;
 
-const Contact = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
+const Contact = ({
+  sectionRef,
+  data,
+}: {
+  sectionRef: RefObject<HTMLDivElement>;
+  data: any;
+}) => {
   return (
     <ContactSection id="contact" ref={sectionRef}>
-      <Title>Contact</Title>
-      <Connect>Let&aposs Connect Via</Connect>
+      <PrismicRichText
+        field={data.contact_title}
+        components={{
+          heading3: (data) => <Title>{data.children}</Title>,
+        }}
+      />
+      <PrismicRichText
+        field={data.contact_description}
+        components={{
+          paragraph: (data) => <Connect>{data.children}</Connect>,
+        }}
+      />
+
       <LinkSection>
-        <Link>E-Mail</Link>
-        <Link>LinkedIn</Link>
-        <Link>Git Hub</Link>
+        {data.contact_list.map((contactList, index) => {
+          return (
+            <PrismicLink
+              field={contactList.contact_link}
+              key={index}
+              target="_blank"
+            >
+              <Link>{contactList.contact_via}</Link>
+            </PrismicLink>
+          );
+        })}
       </LinkSection>
     </ContactSection>
   );

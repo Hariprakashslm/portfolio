@@ -58,10 +58,10 @@ export default function HomePage() {
         <Home sectionRef={sectionRefs[0]} />
         <About data={data1[0].data} sectionRef={sectionRefs[1]} />
         <Skills data={data1[0].data} sectionRef={sectionRefs[2]} />
-        <Education sectionRef={sectionRefs[3]} />
-        <Experinace sectionRef={sectionRefs[4]} />
-        <Projects sectionRef={sectionRefs[5]} />
-        <Contact sectionRef={sectionRefs[6]} />
+        <Education sectionRef={sectionRefs[3]} data={data1[0].data} />
+        <Experinace data={data1[0].data} sectionRef={sectionRefs[4]} />
+        <Projects sectionRef={sectionRefs[5]} data={data1[0].data} />
+        <Contact data={data1[0].data} sectionRef={sectionRefs[6]} />
         <ScrollToTopDiv onClick={scrollToTopFn}>
           <svg
             fill="#00628C"
