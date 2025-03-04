@@ -1,17 +1,17 @@
-'use client';
-import About from '../../components/about';
-import Experinace from '../../components/experiance';
-import Education from '../../components/education';
-import Header from '../../components/header';
-import Home from '../../components/home';
-import Skills from '../../components/skills';
-import data from '../../data/index';
-import Projects from '../../components/projects';
-import Contact from '../../components/contact';
-import React, { RefObject, useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
+"use client";
+import About from "../../components/about";
+import Experinace from "../../components/experiance";
+import Education from "../../components/education";
+import Header from "../../components/header";
+import Home from "../../components/home";
+import Skills from "../../components/skills";
+import data from "../../data/index";
+import Projects from "../../components/projects";
+import Contact from "../../components/contact";
+import React, { RefObject, useCallback, useEffect, useState } from "react";
+import styled from "styled-components";
 
-import { createClient } from '../../lib/prismic';
+import { createClient } from "../../lib/prismic";
 
 const ScrollToTopDiv = styled.div`
   border: solid #00628c 1px;
@@ -28,7 +28,7 @@ const ScrollToTopDiv = styled.div`
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
-export default function HomePage({ page }: { page: any }) {
+export default function HomePage() {
   const headerData = data.headerData;
 
   const sectionRefs: RefObject<HTMLDivElement>[] = headerData.menu.map(() =>
@@ -38,12 +38,12 @@ export default function HomePage({ page }: { page: any }) {
 
   useEffect(() => {
     const client = createClient();
-    client.getAllByType('home_page').then((data) => setData(data));
+    client.getAllByType("home_page").then((data) => setData(data));
   }, []);
   const scrollToTopFn = useCallback(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }, []);
 

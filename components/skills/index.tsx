@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { RefObject } from 'react';
-import { PrismicRichText } from '@prismicio/react';
-import { RichTextField } from '@prismicio/client';
+import styled from "styled-components";
+import { RefObject } from "react";
+import { PrismicRichText } from "@prismicio/react";
+import { RichTextField } from "@prismicio/client";
 const Title = styled.h2`
   font-size: 68px;
   color: #010b30;
@@ -71,7 +71,6 @@ const Skills = ({
   sectionRef: RefObject<HTMLDivElement>;
   data: any;
 }) => {
-  const techSkils = data.techSkils;
   return (
     <SkillsSection id="skills" ref={sectionRef}>
       <PrismicRichText

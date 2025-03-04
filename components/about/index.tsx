@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Title from '../title';
-import { RefObject } from 'react';
-import { PrismicRichText } from '@prismicio/react';
+import styled from "styled-components";
+import Title from "../title";
+import { RefObject } from "react";
+import { PrismicRichText } from "@prismicio/react";
 
 const AboutSection = styled.section`
   padding: 20px;
@@ -25,9 +25,7 @@ const AboutImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
 `;
-const AboutSubHeadeing = styled.h4`
-  opacity: 0.9;
-`;
+
 const AboutSubContent = styled.p`
   opacity: 0.7;
   font-size: 16px;
@@ -60,7 +58,6 @@ const About = ({
   sectionRef: RefObject<HTMLDivElement>;
   data: any;
 }) => {
-  const about = data.about;
   return (
     <AboutSection id="about" ref={sectionRef}>
       <AboutDivider>
