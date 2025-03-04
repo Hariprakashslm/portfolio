@@ -30,6 +30,7 @@ const ScrollToTopDiv = styled.div`
 
 export default function HomePage({ page }: { page: any }) {
   const headerData = data.headerData;
+
   const sectionRefs: RefObject<HTMLDivElement>[] = headerData.menu.map(() =>
     React.createRef<HTMLDivElement>()
   ) as RefObject<HTMLDivElement>[];
@@ -45,6 +46,7 @@ export default function HomePage({ page }: { page: any }) {
       behavior: 'smooth',
     });
   }, []);
+
   return (
     data1 && (
       <>

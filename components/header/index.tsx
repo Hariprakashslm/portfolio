@@ -5,13 +5,19 @@ import { Scrollspy } from '@makotot/ghostui';
 import React, { RefObject, useEffect, useState } from 'react';
 import { PrismicRichText } from '@prismicio/react';
 
-const HeaderSection = styled.nav`
+const HeaderSection = styled.nav<{ visible: string }>`
   padding: 34px;
   position: fixed;
   background-color: #fff;
   width: 100%;
   z-index: 1000;
   border-bottom: 1px solid #a39797;
+  ${(props) =>
+    props.visible === "show"
+      ? `
+    display:block;
+    `
+      : `display:none;`}
 `;
 const HeaderDivider = styled.div`
   display: flex;
@@ -47,6 +53,15 @@ const Header = ({
 }) => {
   const [isClient, setIsClient] = useState(false);
 
+  const [showHeader, setShowHeader] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowHeader(window.scrollY > 100); // Show header after 100px scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -57,7 +72,7 @@ const Header = ({
   };
   console.log({ headerData: data });
   return (
-    <HeaderSection>
+    <HeaderSection visible={showHeader ? "show" : "hide"}>
       {isClient && (
         <Scrollspy offset={-500} sectionRefs={sectionRefs}>
           {({ currentElementIndexInViewport }) => {
