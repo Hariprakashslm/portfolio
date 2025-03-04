@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import data from "../../data/index";
-import Title from "../title";
-import { RefObject } from "react";
+import styled from 'styled-components';
+import Title from '../title';
+import { RefObject } from 'react';
+import { PrismicRichText } from '@prismicio/react';
 
 const AboutSection = styled.section`
   padding: 20px;
@@ -53,30 +53,44 @@ const NavigationButton = styled.button`
   transition: 0.3s;
 `;
 
-const About = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
+const About = ({
+  sectionRef,
+  data,
+}: {
+  sectionRef: RefObject<HTMLDivElement>;
+  data: any;
+}) => {
   const about = data.about;
   return (
     <AboutSection id="about" ref={sectionRef}>
       <AboutDivider>
         <AboutContentDiv>
-          <Title type="white">About</Title>
-          {about.map((aboutData, index) => {
-            return (
-              <AboutSubSectionDiv key={index}>
-                {!!aboutData.title && (
-                  <AboutSubHeadeing>{aboutData.title}</AboutSubHeadeing>
-                )}
-                <AboutSubContent>{aboutData.content}</AboutSubContent>
-              </AboutSubSectionDiv>
-            );
-          })}
+          <PrismicRichText
+            field={data.about_title}
+            components={{
+              heading3: (data) => <Title type="white">{data.children}</Title>,
+            }}
+          />
+          <PrismicRichText
+            field={data.about_content}
+            components={{
+              paragraph: (data) => (
+                <AboutSubSectionDiv>
+                  <AboutSubContent>{data.children}</AboutSubContent>
+                </AboutSubSectionDiv>
+              ),
+            }}
+          />
           <NavigationButtonSection>
             <NavigationButton>Skills</NavigationButton>
             <NavigationButton>Resume</NavigationButton>
           </NavigationButtonSection>
         </AboutContentDiv>
         <AboutImageDiv>
-          <AboutImage src="/about.jpg" />
+          <AboutImage
+            src={data.about_image.url}
+            {...data.about_image.dimentions}
+          />
         </AboutImageDiv>
       </AboutDivider>
     </AboutSection>

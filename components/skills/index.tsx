@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import data from "../../data/index";
-import { RefObject } from "react";
+import styled from 'styled-components';
+import { RefObject } from 'react';
+import { PrismicRichText } from '@prismicio/react';
+import { RichTextField } from '@prismicio/client';
 const Title = styled.h2`
   font-size: 68px;
   color: #010b30;
@@ -63,31 +64,70 @@ const TechFamilierContent = styled.div`
     font-weight: 600;
   }
 `;
-const Skills = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
-  const skills = data.skills;
+const Skills = ({
+  sectionRef,
+  data,
+}: {
+  sectionRef: RefObject<HTMLDivElement>;
+  data: any;
+}) => {
   const techSkils = data.techSkils;
   return (
     <SkillsSection id="skills" ref={sectionRef}>
-      <Title>Skills</Title>
+      <PrismicRichText
+        field={data.skills_title}
+        components={{
+          heading3: (data) => <Title>{data.children}</Title>,
+        }}
+      />
       <SkillsCartSection>
-        {skills.map((data, index) => {
-          return (
-            <SkillsCart key={index}>
-              <SkillCartTitle>{data.title}</SkillCartTitle>
-              <SillCartContent>{data.content}</SillCartContent>
-            </SkillsCart>
-          );
-        })}
+        {data.skill_list?.map(
+          (
+            data: { title: RichTextField; description: RichTextField },
+            index: number
+          ) => {
+            return (
+              <SkillsCart key={index}>
+                <PrismicRichText
+                  field={data.title}
+                  components={{
+                    heading6: (data) => (
+                      <SkillCartTitle>{data.children}</SkillCartTitle>
+                    ),
+                  }}
+                />
+                <PrismicRichText
+                  field={data.description}
+                  components={{
+                    paragraph: (data) => (
+                      <SillCartContent>{data.children}</SillCartContent>
+                    ),
+                  }}
+                />
+              </SkillsCart>
+            );
+          }
+        )}
       </SkillsCartSection>
-      <TechFamilierTitle>Tech I&apos;m familiar with</TechFamilierTitle>{" "}
+      <PrismicRichText
+        field={data.tech_familiar_title}
+        components={{
+          heading4: (data) => (
+            <TechFamilierTitle>{data.children}</TechFamilierTitle>
+          ),
+        }}
+      />
+
       <TechFamilierContentSection>
-        {techSkils.map((skill, index) => {
-          return (
-            <div key={index}>
-              {<TechFamilierContent>{skill?.title}</TechFamilierContent>}
-            </div>
-          );
-        })}
+        {data.tech_familiar_list.map(
+          ({ list }: { list: string }, index: number) => {
+            return (
+              <div key={index}>
+                {<TechFamilierContent>{list}</TechFamilierContent>}
+              </div>
+            );
+          }
+        )}
       </TechFamilierContentSection>
     </SkillsSection>
   );
