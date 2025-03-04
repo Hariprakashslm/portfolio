@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Title from "../title";
 import { RefObject } from "react";
 import { PrismicRichText } from "@prismicio/react";
+import { RichTextField } from "@prismicio/client";
 
 const ContentSection = styled.div`
   padding: 20px;
@@ -36,24 +37,29 @@ const Education = ({
           heading3: (data) => <Title>{data.children}</Title>,
         }}
       />
-      {data.education_group.map((currentData, index) => {
-        return (
-          <ContentItem key={index}>
-            <PrismicRichText
-              field={currentData.sub_title}
-              components={{
-                heading6: (data) => <SubTitle>{data.children}</SubTitle>,
-              }}
-            />
-            <PrismicRichText
-              field={currentData.description}
-              components={{
-                paragraph: (data) => <Content>{data.children}</Content>,
-              }}
-            />
-          </ContentItem>
-        );
-      })}
+      {data.education_group.map(
+        (
+          currentData: { sub_title: RichTextField; description: RichTextField },
+          index: number
+        ) => {
+          return (
+            <ContentItem key={index}>
+              <PrismicRichText
+                field={currentData.sub_title}
+                components={{
+                  heading6: (data) => <SubTitle>{data.children}</SubTitle>,
+                }}
+              />
+              <PrismicRichText
+                field={currentData.description}
+                components={{
+                  paragraph: (data) => <Content>{data.children}</Content>,
+                }}
+              />
+            </ContentItem>
+          );
+        }
+      )}
     </ContentSection>
   );
 };

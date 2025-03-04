@@ -3,6 +3,7 @@ import Title from "../title";
 import Link from "next/link";
 import { RefObject } from "react";
 import { PrismicRichText } from "@prismicio/react";
+import { RichTextField } from "@prismicio/client";
 
 const ContentSection = styled.div`
   margin: 20px;
@@ -96,28 +97,39 @@ const Experinace = ({
           heading3: (data) => <Title type="Dark">{data.children}</Title>,
         }}
       />
-      {data.experiance_group.map((currentData, index) => {
-        return (
-          <ContentItem key={index}>
-            <SubTitle>{currentData.experiance_role}</SubTitle>
-            <RoleTitle>
-              <Link href={currentData.company_link} target="_blank">
-                {currentData.company} -{" "}
-                <Duration>{currentData.duration}</Duration>
-              </Link>
-            </RoleTitle>
-            <PrismicRichText
-              field={currentData.roles_and_responsibility}
-              components={{
-                list: (data) => <ContentList>{data.children}</ContentList>,
-                listItem: (data) => (
-                  <ContentListItem>{data.children}</ContentListItem>
-                ),
-              }}
-            />
-          </ContentItem>
-        );
-      })}
+      {data.experiance_group.map(
+        (
+          currentData: {
+            experiance_role: string;
+            company_link: string;
+            company: string;
+            duration: string;
+            roles_and_responsibility: RichTextField;
+          },
+          index: number
+        ) => {
+          return (
+            <ContentItem key={index}>
+              <SubTitle>{currentData.experiance_role}</SubTitle>
+              <RoleTitle>
+                <Link href={currentData.company_link} target="_blank">
+                  {currentData.company} -{" "}
+                  <Duration>{currentData.duration}</Duration>
+                </Link>
+              </RoleTitle>
+              <PrismicRichText
+                field={currentData.roles_and_responsibility}
+                components={{
+                  list: (data) => <ContentList>{data.children}</ContentList>,
+                  listItem: (data) => (
+                    <ContentListItem>{data.children}</ContentListItem>
+                  ),
+                }}
+              />
+            </ContentItem>
+          );
+        }
+      )}
     </ContentSection>
   );
 };

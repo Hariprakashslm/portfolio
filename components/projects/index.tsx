@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Title from "../title";
 import { RefObject } from "react";
 import { PrismicImage, PrismicRichText } from "@prismicio/react";
+import { RichTextField, ImageField } from "@prismicio/client";
 
 const ProjectSection = styled.section`
   padding: 20px;
@@ -104,38 +105,50 @@ const Projects = ({
           heading3: (data) => <Title>{data.children}</Title>,
         }}
       />
-      {data.project_group.map((currentData, index) => {
-        return (
-          <Card key={index}>
-            <ContentItem>
-              <ContentSection>
-                <PrismicRichText
-                  field={currentData.project_name}
-                  components={{
-                    heading1: (data) => <SubTitle>{data.children}</SubTitle>,
-                  }}
-                />
-                <PrismicRichText
-                  field={currentData.project_description}
-                  components={{
-                    paragraph: (data) => <Content>{data.children}</Content>,
-                  }}
-                />
-                <PrismicRichText
-                  field={currentData.tech}
-                  components={{
-                    list: (data) => <TechSection>{data.children}</TechSection>,
-                    listItem: (data) => <Tech>{data.children}</Tech>,
-                  }}
-                />
-              </ContentSection>
-              <ImageSection>
-                <CustomImage field={currentData.project_image} />
-              </ImageSection>
-            </ContentItem>
-          </Card>
-        );
-      })}
+      {data.project_group.map(
+        (
+          currentData: {
+            project_name: RichTextField;
+            project_description: RichTextField;
+            tech: RichTextField;
+            project_image: ImageField;
+          },
+          index: number
+        ) => {
+          return (
+            <Card key={index}>
+              <ContentItem>
+                <ContentSection>
+                  <PrismicRichText
+                    field={currentData.project_name}
+                    components={{
+                      heading1: (data) => <SubTitle>{data.children}</SubTitle>,
+                    }}
+                  />
+                  <PrismicRichText
+                    field={currentData.project_description}
+                    components={{
+                      paragraph: (data) => <Content>{data.children}</Content>,
+                    }}
+                  />
+                  <PrismicRichText
+                    field={currentData.tech}
+                    components={{
+                      list: (data) => (
+                        <TechSection>{data.children}</TechSection>
+                      ),
+                      listItem: (data) => <Tech>{data.children}</Tech>,
+                    }}
+                  />
+                </ContentSection>
+                <ImageSection>
+                  <CustomImage field={currentData.project_image} />
+                </ImageSection>
+              </ContentItem>
+            </Card>
+          );
+        }
+      )}
     </ProjectSection>
   );
 };

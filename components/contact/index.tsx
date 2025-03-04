@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { RefObject } from "react";
 import { PrismicLink, PrismicRichText } from "@prismicio/react";
+import { LinkField } from "@prismicio/client";
 
 const ContactSection = styled.footer`
   padding: 50px;
@@ -52,17 +53,22 @@ const Contact = ({
       />
 
       <LinkSection>
-        {data.contact_list.map((contactList, index) => {
-          return (
-            <PrismicLink
-              field={contactList.contact_link}
-              key={index}
-              target="_blank"
-            >
-              <Link>{contactList.contact_via}</Link>
-            </PrismicLink>
-          );
-        })}
+        {data.contact_list.map(
+          (
+            contactList: { contact_link: LinkField; contact_via: string },
+            index: number
+          ) => {
+            return (
+              <PrismicLink
+                field={contactList.contact_link}
+                key={index}
+                target="_blank"
+              >
+                <Link>{contactList.contact_via}</Link>
+              </PrismicLink>
+            );
+          }
+        )}
       </LinkSection>
     </ContactSection>
   );
