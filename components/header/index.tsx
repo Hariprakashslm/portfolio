@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { RefObject, useEffect, useState } from 'react';
-import { useScrollspy } from '@makotot/ghostui';
 
 const HeaderSection = styled.header<{ visible: string }>`
   position: fixed;

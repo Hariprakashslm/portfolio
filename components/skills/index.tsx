@@ -371,7 +371,6 @@ const skillsData = [
 
 const Skills = ({
   sectionRef,
-  data,
 }: {
   sectionRef: RefObject<HTMLDivElement>;
   data: any;
