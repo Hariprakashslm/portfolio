@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { RefObject } from 'react';
 import { PrismicRichText } from '@prismicio/react';
-import { RichTextField } from '@prismicio/client';
 
 const BannerSection = styled.section`
   height: 100vh;

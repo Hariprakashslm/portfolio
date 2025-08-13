@@ -1,19 +1,23 @@
-import styled from "styled-components";
-import Title from "../title";
-import { RefObject } from "react";
-import { PrismicRichText } from "@prismicio/react";
-import { RichTextField } from "@prismicio/client";
+import styled from 'styled-components';
+import { RefObject } from 'react';
 
 const ContactSection = styled.section`
   padding: var(--spacing-3xl) var(--spacing-xl);
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #0a0a0a 100%);
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a1a1a 25%,
+    #2d2d2d 50%,
+    #1a1a1a 75%,
+    #0a0a0a 100%
+  );
   position: relative;
   overflow: hidden;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -21,9 +25,14 @@ const ContactSection = styled.section`
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary),
+      transparent
+    );
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -31,17 +40,22 @@ const ContactSection = styled.section`
     right: 0;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(147, 51, 234, 0.1) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     animation: backgroundPulse 8s ease-in-out infinite;
   }
-  
+
   @keyframes backgroundPulse {
-    0%, 100% { 
+    0%,
+    100% {
       transform: scale(1) rotate(0deg);
       opacity: 0.1;
     }
-    50% { 
+    50% {
       transform: scale(1.2) rotate(180deg);
       opacity: 0.2;
     }
@@ -60,13 +74,11 @@ const GlassCard = styled.div`
   border-radius: 24px;
   padding: var(--spacing-3xl);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.5),
-    0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   animation: cardFloat 6s ease-in-out infinite;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -74,13 +86,15 @@ const GlassCard = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, 
-      rgba(20, 20, 20, 0.9) 0%, 
-      rgba(40, 40, 40, 0.7) 50%, 
-      rgba(20, 20, 20, 0.9) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(20, 20, 20, 0.9) 0%,
+      rgba(40, 40, 40, 0.7) 50%,
+      rgba(20, 20, 20, 0.9) 100%
+    );
     z-index: -1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -88,25 +102,36 @@ const GlassCard = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-      transparent 0%, 
-      rgba(147, 51, 234, 0.05) 50%, 
-      transparent 100%);
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(147, 51, 234, 0.05) 50%,
+      transparent 100%
+    );
     transform: translateX(-100%);
     transition: transform 1.2s ease;
   }
-  
+
   &:hover::after {
     transform: translateX(100%);
   }
-  
+
   @keyframes cardFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    25% { transform: translateY(-3px) rotate(0.5deg); }
-    50% { transform: translateY(-6px) rotate(0deg); }
-    75% { transform: translateY(-3px) rotate(-0.5deg); }
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-3px) rotate(0.5deg);
+    }
+    50% {
+      transform: translateY(-6px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-3px) rotate(-0.5deg);
+    }
   }
-  
+
   @media (max-width: 768px) {
     padding: var(--spacing-2xl);
     margin: 0 var(--spacing-md);
@@ -117,7 +142,7 @@ const ContactHeader = styled.div`
   margin-bottom: var(--spacing-2xl);
   position: relative;
   animation: headerSlideDown 1s ease-out both;
-  
+
   @keyframes headerSlideDown {
     from {
       opacity: 0;
@@ -137,7 +162,7 @@ const ContactTitle = styled.h2`
   margin: 0;
   position: relative;
   animation: titleGlow 3s ease-in-out infinite;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -150,30 +175,33 @@ const ContactTitle = styled.h2`
     border-radius: 2px;
     animation: accentPulse 2s ease-in-out infinite;
   }
-  
+
   @keyframes titleGlow {
-    0%, 100% { 
+    0%,
+    100% {
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-    50% { 
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+    50% {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.2);
     }
   }
-  
+
   @keyframes accentPulse {
-    0%, 100% { 
+    0%,
+    100% {
       box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
       transform: translateY(-50%) scale(1);
     }
-    50% { 
+    50% {
       box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
       transform: translateY(-50%) scale(1.1);
     }
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
-    
+
     &::before {
       left: -15px;
       width: 3px;
@@ -187,7 +215,7 @@ const ContactItems = styled.div`
   flex-direction: column;
   gap: var(--spacing-lg);
   animation: itemsFadeIn 1s ease-out 0.5s both;
-  
+
   @keyframes itemsFadeIn {
     from {
       opacity: 0;
@@ -213,8 +241,8 @@ const ContactItem = styled.a<{ 'data-index': number }>`
   position: relative;
   overflow: hidden;
   animation: itemSlideIn 0.8s ease-out both;
-  animation-delay: ${props => props['data-index'] * 0.2}s;
-  
+  animation-delay: ${(props) => props['data-index'] * 0.2}s;
+
   &::before {
     content: '';
     position: absolute;
@@ -222,13 +250,15 @@ const ContactItem = styled.a<{ 'data-index': number }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-      rgba(147, 51, 234, 0.1) 0%, 
-      rgba(236, 72, 153, 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(147, 51, 234, 0.1) 0%,
+      rgba(236, 72, 153, 0.1) 100%
+    );
     opacity: 0;
     transition: opacity var(--transition-normal);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -236,30 +266,31 @@ const ContactItem = styled.a<{ 'data-index': number }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-      transparent 0%, 
-      rgba(255, 255, 255, 0.05) 50%, 
-      transparent 100%);
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
     transform: translateX(-100%);
     transition: transform var(--transition-normal);
   }
-  
+
   &:hover {
     transform: translateY(-3px) scale(1.02);
     border-color: rgba(147, 51, 234, 0.3);
-    box-shadow: 
-      0 15px 35px rgba(147, 51, 234, 0.2),
+    box-shadow: 0 15px 35px rgba(147, 51, 234, 0.2),
       0 5px 15px rgba(0, 0, 0, 0.3);
-    
+
     &::before {
       opacity: 1;
     }
-    
+
     &::after {
       transform: translateX(100%);
     }
   }
-  
+
   @keyframes itemSlideIn {
     from {
       opacity: 0;
@@ -276,7 +307,7 @@ const ContactIcon = styled.div<{ color: string; 'data-index': number }>`
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  background: ${props => props.color};
+  background: ${(props) => props.color};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,8 +316,8 @@ const ContactIcon = styled.div<{ color: string; 'data-index': number }>`
   position: relative;
   z-index: 1;
   animation: iconBounce 0.6s ease-out both;
-  animation-delay: ${props => props['data-index'] * 0.2 + 0.3}s;
-  
+  animation-delay: ${(props) => props['data-index'] * 0.2 + 0.3}s;
+
   &::before {
     content: '';
     position: absolute;
@@ -294,12 +325,12 @@ const ContactIcon = styled.div<{ color: string; 'data-index': number }>`
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: ${props => props.color};
+    background: ${(props) => props.color};
     border-radius: 14px;
     opacity: 0.3;
     animation: iconGlow 2s ease-in-out infinite;
   }
-  
+
   @keyframes iconBounce {
     from {
       opacity: 0;
@@ -310,18 +341,19 @@ const ContactIcon = styled.div<{ color: string; 'data-index': number }>`
       transform: scale(1) rotate(0deg);
     }
   }
-  
+
   @keyframes iconGlow {
-    0%, 100% { 
+    0%,
+    100% {
       opacity: 0.3;
       transform: scale(1);
     }
-    50% { 
+    50% {
       opacity: 0.6;
       transform: scale(1.1);
     }
   }
-  
+
   @media (max-width: 768px) {
     width: 45px;
     height: 45px;
@@ -358,7 +390,7 @@ const DecorativeElement = styled.div`
   top: 10%;
   left: 5%;
   z-index: 0;
-  
+
   @media (max-width: 768px) {
     width: 150px;
     height: 150px;
@@ -377,15 +409,21 @@ const FloatingParticles = styled.div`
   pointer-events: none;
 `;
 
-const Particle = styled.div<{ size: number; top: string; left: string; delay: number; duration: number }>`
+const Particle = styled.div<{
+  size: number;
+  top: string;
+  left: string;
+  delay: number;
+  duration: number;
+}>`
   position: absolute;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
   background: rgba(147, 51, 234, 0.3);
   border-radius: 50%;
-  animation: particleFloat ${props => props.duration}s linear infinite;
-  animation-delay: ${props => props.delay}s;
-  
+  animation: particleFloat ${(props) => props.duration}s linear infinite;
+  animation-delay: ${(props) => props.delay}s;
+
   @keyframes particleFloat {
     0% {
       transform: translateY(100vh) translateX(0px) scale(0);
@@ -409,34 +447,33 @@ const Particle = styled.div<{ size: number; top: string; left: string; delay: nu
 // Contact data with social media links
 const contactData = [
   {
-    name: "LinkedIn",
+    name: 'LinkedIn',
     primary: "Let's Connect",
-    secondary: "on LinkedIn",
-    icon: "in",
-    color: "linear-gradient(135deg, #0077b5, #005885)",
-    url: "https://linkedin.com/in/yourprofile"
+    secondary: 'on LinkedIn',
+    icon: 'in',
+    color: 'linear-gradient(135deg, #0077b5, #005885)',
+    url: 'https://linkedin.com/in/yourprofile',
   },
   {
-    name: "Instagram",
-    primary: "Instagram",
-    secondary: "@your.handle",
-    icon: "📷",
-    color: "linear-gradient(135deg, #e4405f, #c13584)",
-    url: "https://instagram.com/yourprofile"
+    name: 'Instagram',
+    primary: 'Instagram',
+    secondary: '@your.handle',
+    icon: '📷',
+    color: 'linear-gradient(135deg, #e4405f, #c13584)',
+    url: 'https://instagram.com/yourprofile',
   },
   {
-    name: "GitHub",
-    primary: "GitHub",
-    secondary: "@yourusername",
-    icon: "🐙",
-    color: "linear-gradient(135deg, #6e7681, #484f58)",
-    url: "https://github.com/yourusername"
-  }
+    name: 'GitHub',
+    primary: 'GitHub',
+    secondary: '@yourusername',
+    icon: '🐙',
+    color: 'linear-gradient(135deg, #6e7681, #484f58)',
+    url: 'https://github.com/yourusername',
+  },
 ];
 
 const Contact = ({
   sectionRef,
-  data,
 }: {
   sectionRef: RefObject<HTMLDivElement>;
   data: any;
@@ -444,7 +481,7 @@ const Contact = ({
   return (
     <ContactSection id="contact" ref={sectionRef}>
       <DecorativeElement />
-      
+
       <FloatingParticles>
         {[...Array(15)].map((_, i) => (
           <Particle
@@ -457,19 +494,19 @@ const Contact = ({
           />
         ))}
       </FloatingParticles>
-      
+
       <ContactContainer>
         <GlassCard>
           <ContactHeader>
             <ContactTitle>Connect With Me</ContactTitle>
           </ContactHeader>
-          
+
           <ContactItems>
             {contactData.map((contact, index) => (
-              <ContactItem 
-                key={index} 
-                href={contact.url} 
-                target="_blank" 
+              <ContactItem
+                key={index}
+                href={contact.url}
+                target="_blank"
                 rel="noopener noreferrer"
                 data-index={index}
               >

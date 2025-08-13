@@ -174,22 +174,15 @@ const ProgressBar = styled.div`
 `;
 
 const Header = ({
-  data,
   headerData,
   sectionRefs,
 }: {
-  data: any;
   headerData: any;
   sectionRefs: RefObject<HTMLDivElement>[];
 }) => {
   const [visible, setVisible] = useState('show');
   const [scrollWidth, setScrollWidth] = useState(0);
   const [currentSection, setCurrentSection] = useState(0);
-
-  const currentSectionIndexes = useScrollspy({
-    sectionRefs: sectionRefs,
-    offset: -80,
-  });
 
   useEffect(() => {
     const handleScroll = () => {
