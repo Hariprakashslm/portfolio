@@ -348,8 +348,6 @@ const FloatingElements = styled.div`
 
 const FloatingCircle = styled.div<{
   size: number;
-  top: string;
-  left: string;
   delay: number;
   color: string;
 }>`
@@ -385,8 +383,6 @@ const FloatingCircle = styled.div<{
 
 const FloatingSquare = styled.div<{
   size: number;
-  top: string;
-  left: string;
   delay: number;
   color: string;
 }>`
@@ -473,41 +469,11 @@ const Home = ({
       <BannerImage src="/banner.jpg" alt="Banner" />
 
       <FloatingElements>
-        <FloatingCircle
-          size={80}
-          top="10%"
-          left="10%"
-          delay={0}
-          color="rgba(255, 215, 0, 0.3)"
-        />
-        <FloatingCircle
-          size={120}
-          top="20%"
-          right="15%"
-          delay={2}
-          color="rgba(147, 51, 234, 0.3)"
-        />
-        <FloatingCircle
-          size={60}
-          top="70%"
-          left="20%"
-          delay={4}
-          color="rgba(79, 172, 254, 0.3)"
-        />
-        <FloatingSquare
-          size={100}
-          top="30%"
-          right="25%"
-          delay={1}
-          color="rgba(255, 107, 107, 0.3)"
-        />
-        <FloatingSquare
-          size={70}
-          top="60%"
-          left="70%"
-          delay={3}
-          color="rgba(46, 213, 115, 0.3)"
-        />
+        <FloatingCircle size={80} delay={0} color="rgba(255, 215, 0, 0.3)" />
+        <FloatingCircle size={120} delay={2} color="rgba(147, 51, 234, 0.3)" />
+        <FloatingCircle size={60} delay={4} color="rgba(79, 172, 254, 0.3)" />
+        <FloatingSquare size={100} delay={1} color="rgba(255, 107, 107, 0.3)" />
+        <FloatingSquare size={70} delay={3} color="rgba(46, 213, 115, 0.3)" />
       </FloatingElements>
 
       <ParticleSystem>

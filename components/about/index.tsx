@@ -335,10 +335,10 @@ const SecondaryButton = styled.a`
   }
 `;
 
-const ButtonIcon = styled.span`
+const ButtonIcon = styled.span<{ dataindex: number }>`
   font-size: 1.2rem;
   animation: iconBounce 0.6s ease-out both;
-  animation-delay: ${(props) => props['data-index'] * 0.2 + 0.3}s;
+  animation-delay: ${(props) => props.dataindex * 0.2 + 0.3}s;
 
   @keyframes iconBounce {
     from {
@@ -383,8 +383,6 @@ const FloatingElements = styled.div`
 
 const FloatingCircle = styled.div<{
   size: number;
-  top: string;
-  left: string;
   delay: number;
   color: string;
 }>`
@@ -420,8 +418,6 @@ const FloatingCircle = styled.div<{
 
 const FloatingSquare = styled.div<{
   size: number;
-  top: string;
-  left: string;
   delay: number;
   color: string;
 }>`
@@ -457,41 +453,11 @@ const About = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
       <DecorativeElement />
 
       <FloatingElements>
-        <FloatingCircle
-          size={100}
-          top="15%"
-          left="10%"
-          delay={0}
-          color="rgba(139, 92, 246, 0.3)"
-        />
-        <FloatingCircle
-          size={80}
-          top="25%"
-          right="20%"
-          delay={2}
-          color="rgba(236, 72, 153, 0.3)"
-        />
-        <FloatingCircle
-          size={120}
-          top="70%"
-          left="15%"
-          delay={4}
-          color="rgba(59, 130, 246, 0.3)"
-        />
-        <FloatingSquare
-          size={90}
-          top="35%"
-          right="10%"
-          delay={1}
-          color="rgba(16, 185, 129, 0.3)"
-        />
-        <FloatingSquare
-          size={70}
-          top="60%"
-          right="30%"
-          delay={3}
-          color="rgba(245, 158, 11, 0.3)"
-        />
+        <FloatingCircle size={100} delay={0} color="rgba(139, 92, 246, 0.3)" />
+        <FloatingCircle size={80} delay={2} color="rgba(236, 72, 153, 0.3)" />
+        <FloatingCircle size={120} delay={4} color="rgba(59, 130, 246, 0.3)" />
+        <FloatingSquare size={90} delay={1} color="rgba(16, 185, 129, 0.3)" />
+        <FloatingSquare size={70} delay={3} color="rgba(245, 158, 11, 0.3)" />
       </FloatingElements>
 
       <AboutContainer>
@@ -516,12 +482,12 @@ const About = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
 
         <ActionButtons>
           <PrimaryButton href="/cv.pdf" target="_blank" download>
-            <ButtonIcon data-index={0}>📄</ButtonIcon>
+            <ButtonIcon dataindex={0}>📄</ButtonIcon>
             Download CV
           </PrimaryButton>
 
           <SecondaryButton href="#projects">
-            <ButtonIcon data-index={1}>&lt;/&gt;</ButtonIcon>
+            <ButtonIcon dataindex={1}>&lt;/&gt;</ButtonIcon>
             View Projects
           </SecondaryButton>
         </ActionButtons>

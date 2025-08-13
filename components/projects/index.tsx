@@ -87,7 +87,7 @@ const ProjectGrid = styled.div`
   }
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled.div<{ dataindex: number }>`
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -96,7 +96,7 @@ const ProjectCard = styled.div`
   transition: all var(--transition-normal);
   position: relative;
   animation: cardSlideIn 0.8s ease-out both;
-  animation-delay: ${(props) => props['data-index'] * 0.2}s;
+  animation-delay: ${(props) => props.dataindex * 0.2}s;
 
   &::before {
     content: '';
@@ -290,7 +290,7 @@ const TechStack = styled.div`
   }
 `;
 
-const Tech = styled.span`
+const Tech = styled.span<{ dataindex: number }>`
   padding: var(--spacing-xs) var(--spacing-sm);
   background: linear-gradient(135deg, #8b5cf6, #ec4899);
   color: white;
@@ -300,7 +300,7 @@ const Tech = styled.span`
   box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
   transition: all var(--transition-normal);
   animation: techBounce 0.6s ease-out both;
-  animation-delay: ${(props) => props['data-index'] * 0.1}s;
+  animation-delay: ${(props) => props.dataindex * 0.1}s;
 
   &:hover {
     transform: translateY(-2px) scale(1.05);
@@ -465,7 +465,7 @@ const Projects = ({
               const tech = currentData.tech_stack || currentData.tech;
 
               return (
-                <ProjectCard key={index} data-index={index}>
+                <ProjectCard key={index} dataindex={index}>
                   <ImageSection>
                     {image ? (
                       <CustomImage field={image} />
@@ -530,7 +530,7 @@ const Projects = ({
                                     return (
                                       <Tech
                                         key={techIndex}
-                                        data-index={techIndex}
+                                        dataindex={techIndex}
                                       >
                                         {text}
                                       </Tech>
@@ -544,15 +544,15 @@ const Projects = ({
                                 typeof data.children?.[0] === 'string'
                                   ? data.children[0]
                                   : (data.children?.[0] as any)?.text || 'Tech';
-                              return <Tech data-index={1}>{text}</Tech>;
+                              return <Tech dataindex={1}>{text}</Tech>;
                             },
                           }}
                         />
                       ) : (
                         <>
-                          <Tech data-index={0}>React</Tech>
-                          <Tech data-index={1}>Next.js</Tech>
-                          <Tech data-index={2}>TypeScript</Tech>
+                          <Tech dataindex={0}>React</Tech>
+                          <Tech dataindex={1}>Next.js</Tech>
+                          <Tech dataindex={2}>TypeScript</Tech>
                         </>
                       )}
                     </TechStack>
