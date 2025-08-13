@@ -1,17 +1,17 @@
-"use client";
-import About from "../../components/about";
-import Experience from "../../components/experiance";
-import Education from "../../components/education";
-import Header from "../../components/header";
-import Home from "../../components/home";
-import Skills from "../../components/skills";
-import data from "../../data/index";
-import Projects from "../../components/projects";
-import Contact from "../../components/contact";
-import React, { RefObject, useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
+'use client';
+import About from '../../components/about';
+import Experience from '../../components/experiance';
+import Education from '../../components/education';
+import Header from '../../components/header';
+import Home from '../../components/home';
+import Skills from '../../components/skills';
+import data from '../../data/index';
+import Projects from '../../components/projects';
+import Contact from '../../components/contact';
+import React, { RefObject, useCallback, useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-import { createClient } from "../../lib/prismic";
+import { createClient } from '../../lib/prismic';
 
 const ScrollToTopDiv = styled.div`
   border: 2px solid var(--primary);
@@ -28,18 +28,18 @@ const ScrollToTopDiv = styled.div`
   cursor: pointer;
   transition: all var(--transition-normal);
   z-index: 1000;
-  
+
   &:hover {
     transform: translateY(-3px) scale(1.1);
     box-shadow: var(--shadow-xl);
     border-color: var(--secondary);
     background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   }
-  
+
   &:active {
     transform: translateY(-1px) scale(1.05);
   }
-  
+
   @media (max-width: 768px) {
     right: 1rem;
     bottom: 1rem;
@@ -58,11 +58,11 @@ const LoadingSpinner = styled.div`
 
 export default function HomePage() {
   const headerData = data.headerData;
- 
+
   const sectionRefs: RefObject<HTMLDivElement>[] = headerData.menu.map(() =>
     React.createRef<HTMLDivElement>()
   ) as RefObject<HTMLDivElement>[];
-  
+
   const [data1, setData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -72,10 +72,10 @@ export default function HomePage() {
       try {
         setIsLoading(true);
         const client = createClient();
-        const result = await client.getAllByType("home_page");
+        const result = await client.getAllByType('home_page');
         setData(result);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
         setHasError(true);
       } finally {
         setIsLoading(false);
@@ -84,37 +84,35 @@ export default function HomePage() {
 
     fetchData();
   }, []);
-  
+
   const scrollToTopFn = useCallback(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, []);
 
   // Show loading state while data is being fetched
   if (isLoading) {
-    return (
-      <LoadingSpinner>
-        Loading Portfolio...
-      </LoadingSpinner>
-    );
+    return <LoadingSpinner>Loading Portfolio...</LoadingSpinner>;
   }
 
   // Show error state if data fetching failed
   if (hasError || !data1) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        minHeight: '100vh',
-        flexDirection: 'column',
-        gap: '1rem'
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh',
+          flexDirection: 'column',
+          gap: '1rem',
+        }}
+      >
         <h1>Something went wrong</h1>
         <p>Unable to load portfolio data. Please try refreshing the page.</p>
-        <button 
+        <button
           onClick={() => window.location.reload()}
           style={{
             padding: '0.75rem 1.5rem',
@@ -122,7 +120,7 @@ export default function HomePage() {
             color: 'white',
             border: 'none',
             borderRadius: '0.5rem',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         >
           Refresh Page
@@ -130,17 +128,13 @@ export default function HomePage() {
       </div>
     );
   }
-  console.log({data})
+  console.log({ data });
   return (
     <>
-      <Header
-        data={data1[0].data}
-        headerData={headerData}
-        sectionRefs={sectionRefs}
-      />
-       <Home sectionRef={sectionRefs[0]} data={data1[0].data}  /> 
-      <About data={data1[0].data} sectionRef={sectionRefs[1]} />
-       <Skills data={data1[0].data} sectionRef={sectionRefs[2]} />
+      <Header headerData={headerData} sectionRefs={sectionRefs} />
+      <Home sectionRef={sectionRefs[0]} data={data1[0].data} />
+      <About sectionRef={sectionRefs[1]} />
+      <Skills data={data1[0].data} sectionRef={sectionRefs[2]} />
       <Education sectionRef={sectionRefs[3]} data={data1[0].data} />
       <Experience data={data1[0].data} sectionRef={sectionRefs[4]} />
       <Projects sectionRef={sectionRefs[5]} data={data1[0].data} />
@@ -162,7 +156,7 @@ export default function HomePage() {
 	c-5.858,5.857-5.858,15.355,0,21.213L278.787,150H15c-8.284,0-15,6.716-15,15S6.716,180,15,180z"
           />
         </svg>
-      </ScrollToTopDiv>  
+      </ScrollToTopDiv>
     </>
   );
 }
