@@ -260,81 +260,81 @@ const RoleTitle = styled.h3`
   }
 `;
 
-const ScrollIndicator = styled.div`
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  animation: scrollBounce 2s ease-in-out infinite;
+// const ScrollIndicator = styled.div`
+//   position: absolute;
+//   bottom: 2rem;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   z-index: 3;
+//   animation: scrollBounce 2s ease-in-out infinite;
 
-  @keyframes scrollBounce {
-    0%,
-    100% {
-      transform: translateX(-50%) translateY(0px);
-    }
-    50% {
-      transform: translateX(-50%) translateY(-10px);
-    }
-  }
-`;
+//   @keyframes scrollBounce {
+//     0%,
+//     100% {
+//       transform: translateX(-50%) translateY(0px);
+//     }
+//     50% {
+//       transform: translateX(-50%) translateY(-10px);
+//     }
+//   }
+// `;
 
-const ScrollArrow = styled.div`
-  width: 4px;
-  height: 50px;
-  background: linear-gradient(180deg, #ffd700, #ffed4e);
-  border-radius: 2px;
-  position: relative;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-  animation: arrowPulse 2s ease-in-out infinite;
+// const ScrollArrow = styled.div`
+//   width: 4px;
+//   height: 50px;
+//   background: linear-gradient(180deg, #ffd700, #ffed4e);
+//   border-radius: 2px;
+//   position: relative;
+//   box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+//   animation: arrowPulse 2s ease-in-out infinite;
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border-right: 2px solid #ffd700;
-    border-bottom: 2px solid #ffd700;
-    transform: rotate(45deg);
-    animation: arrowRotate 3s linear infinite;
-  }
+//   &::before,
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     width: 12px;
+//     height: 12px;
+//     border-right: 2px solid #ffd700;
+//     border-bottom: 2px solid #ffd700;
+//     transform: rotate(45deg);
+//     animation: arrowRotate 3s linear infinite;
+//   }
 
-  &::before {
-    top: 5px;
-    left: -4px;
-  }
+//   &::before {
+//     top: 5px;
+//     left: -4px;
+//   }
 
-  &::after {
-    bottom: 5px;
-    left: -4px;
-    animation-delay: 1.5s;
-  }
+//   &::after {
+//     bottom: 5px;
+//     left: -4px;
+//     animation-delay: 1.5s;
+//   }
 
-  @keyframes arrowPulse {
-    0%,
-    100% {
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-      transform: scale(1);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-      transform: scale(1.1);
-    }
-  }
+//   @keyframes arrowPulse {
+//     0%,
+//     100% {
+//       box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+//       transform: scale(1);
+//     }
+//     50% {
+//       box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+//       transform: scale(1.1);
+//     }
+//   }
 
-  @keyframes arrowRotate {
-    0% {
-      transform: rotate(45deg) scale(1);
-    }
-    50% {
-      transform: rotate(45deg) scale(1.2);
-    }
-    100% {
-      transform: rotate(45deg) scale(1);
-    }
-  }
-`;
+//   @keyframes arrowRotate {
+//     0% {
+//       transform: rotate(45deg) scale(1);
+//     }
+//     50% {
+//       transform: rotate(45deg) scale(1.2);
+//     }
+//     100% {
+//       transform: rotate(45deg) scale(1);
+//     }
+//   }
+// `;
 
 const FloatingElements = styled.div`
   position: absolute;

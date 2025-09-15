@@ -319,75 +319,75 @@ const Tech = styled.span<{ dataindex: number }>`
   }
 `;
 
-const ProjectLinks = styled.div`
-  display: flex;
-  gap: var(--spacing-md);
-  animation: linksSlideIn 1s ease-out 1.1s both;
+// const ProjectLinks = styled.div`
+//   display: flex;
+//   gap: var(--spacing-md);
+//   animation: linksSlideIn 1s ease-out 1.1s both;
 
-  @keyframes linksSlideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
+//   @keyframes linksSlideIn {
+//     from {
+//       opacity: 0;
+//       transform: translateY(20px);
+//     }
+//     to {
+//       opacity: 1;
+//       transform: translateY(0);
+//     }
+//   }
+// `;
 
-const ProjectLink = styled.a`
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: linear-gradient(135deg, #8b5cf6, #ec4899);
-  color: white;
-  text-decoration: none;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all var(--transition-normal);
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-  position: relative;
-  overflow: hidden;
+// const ProjectLink = styled.a`
+//   padding: var(--spacing-sm) var(--spacing-lg);
+//   background: linear-gradient(135deg, #8b5cf6, #ec4899);
+//   color: white;
+//   text-decoration: none;
+//   border-radius: var(--radius-full);
+//   font-weight: 600;
+//   font-size: 0.9rem;
+//   transition: all var(--transition-normal);
+//   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+//   position: relative;
+//   overflow: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.2) 0%,
-      transparent 50%,
-      rgba(255, 255, 255, 0.1) 100%
-    );
-    transform: translateX(-100%);
-    transition: transform var(--transition-normal);
-  }
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: linear-gradient(
+//       135deg,
+//       rgba(255, 255, 255, 0.2) 0%,
+//       transparent 50%,
+//       rgba(255, 255, 255, 0.1) 100%
+//     );
+//     transform: translateX(-100%);
+//     transition: transform var(--transition-normal);
+//   }
 
-  &:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+//   &:hover {
+//     transform: translateY(-2px) scale(1.05);
+//     box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 
-    &::before {
-      transform: translateX(100%);
-    }
-  }
+//     &::before {
+//       transform: translateX(100%);
+//     }
+//   }
 
-  animation: linkPulse 2s ease-in-out infinite;
+//   animation: linkPulse 2s ease-in-out infinite;
 
-  @keyframes linkPulse {
-    0%,
-    100% {
-      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-    }
-    50% {
-      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3),
-        0 0 20px rgba(139, 92, 246, 0.2);
-    }
-  }
-`;
+//   @keyframes linkPulse {
+//     0%,
+//     100% {
+//       box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+//     }
+//     50% {
+//       box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3),
+//         0 0 20px rgba(139, 92, 246, 0.2);
+//     }
+//   }
+// `;
 
 const DecorativeElement = styled.div`
   position: absolute;
