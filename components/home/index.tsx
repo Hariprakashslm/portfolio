@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { RefObject } from 'react';
-import { PrismicRichText } from '@prismicio/react';
+import styled from "styled-components";
+import { RefObject } from "react";
+import { PrismicRichText } from "@prismicio/react";
 
 const BannerSection = styled.section`
   height: 100vh;
@@ -13,7 +13,7 @@ const BannerSection = styled.section`
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -38,7 +38,7 @@ const BannerSection = styled.section`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -113,7 +113,7 @@ const BannerContent = styled.div`
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -290,7 +290,7 @@ const ScrollArrow = styled.div`
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 12px;
     height: 12px;
@@ -517,9 +517,9 @@ const Home = ({
         </BannerContent>
       </BannerContentSection>
 
-      <ScrollIndicator>
+      {/* <ScrollIndicator>
         <ScrollArrow />
-      </ScrollIndicator>
+      </ScrollIndicator> */}
     </BannerSection>
   );
 };

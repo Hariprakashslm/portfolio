@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { RefObject } from 'react';
+import styled from "styled-components";
+import { RefObject } from "react";
 
 const AboutSection = styled.section`
   padding: var(--spacing-3xl) var(--spacing-xl);
@@ -19,7 +19,7 @@ const AboutSection = styled.section`
   justify-content: center;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -35,7 +35,7 @@ const AboutSection = styled.section`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
@@ -89,7 +89,7 @@ const AboutContent = styled.div`
   animation: contentFloat 6s ease-in-out infinite;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -105,7 +105,7 @@ const AboutContent = styled.div`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -165,7 +165,7 @@ const HighlightedName = styled.span`
   animation: nameGlow 3s ease-in-out infinite;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -241,7 +241,7 @@ const PrimaryButton = styled.a`
   animation: primaryButtonPulse 2s ease-in-out infinite;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -298,7 +298,7 @@ const SecondaryButton = styled.a`
   animation: secondaryButtonGlow 3s ease-in-out infinite;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -481,9 +481,13 @@ const About = ({ sectionRef }: { sectionRef: RefObject<HTMLDivElement> }) => {
         </AboutContent>
 
         <ActionButtons>
-          <PrimaryButton href="/cv.pdf" target="_blank" download>
+          <PrimaryButton
+            href="/Hariprakash-S-FlowCV-Resume-20250807.pdf"
+            target="_blank"
+            download
+          >
             <ButtonIcon dataindex={0}>📄</ButtonIcon>
-            Download CV
+            Download Resume
           </PrimaryButton>
 
           <SecondaryButton href="#projects">

@@ -1,19 +1,20 @@
-'use client';
-import About from '../../components/about';
-import Experience from '../../components/experiance';
-import Education from '../../components/education';
-import Header from '../../components/header';
-import Home from '../../components/home';
-import Skills from '../../components/skills';
-import data from '../../data/index';
-import Projects from '../../components/projects';
-import Contact from '../../components/contact';
-import React, { RefObject, useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
+"use client";
+import About from "../../components/about";
+import Experience from "../../components/experiance";
+import Education from "../../components/education";
+import Header from "../../components/header";
+import Home from "../../components/home";
+import Skills from "../../components/skills";
+import data from "../../data/index";
+import Projects from "../../components/projects";
+import Contact from "../../components/contact";
+import React, { RefObject, useCallback, useEffect, useState } from "react";
+import styled from "styled-components";
 
-import { createClient } from '../../lib/prismic';
+import { createClient } from "../../lib/prismic";
 
 const ScrollToTopDiv = styled.div`
+  transform: rotate(-90deg);
   border: 2px solid var(--primary);
   position: fixed;
   right: 2rem;
@@ -72,10 +73,10 @@ export default function HomePage() {
       try {
         setIsLoading(true);
         const client = createClient();
-        const result = await client.getAllByType('home_page');
+        const result = await client.getAllByType("home_page");
         setData(result);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setHasError(true);
       } finally {
         setIsLoading(false);
@@ -88,7 +89,7 @@ export default function HomePage() {
   const scrollToTopFn = useCallback(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }, []);
 
@@ -102,12 +103,12 @@ export default function HomePage() {
     return (
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh',
-          flexDirection: 'column',
-          gap: '1rem',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          flexDirection: "column",
+          gap: "1rem",
         }}
       >
         <h1>Something went wrong</h1>
@@ -115,12 +116,12 @@ export default function HomePage() {
         <button
           onClick={() => window.location.reload()}
           style={{
-            padding: '0.75rem 1.5rem',
-            background: 'var(--primary)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '0.5rem',
-            cursor: 'pointer',
+            padding: "0.75rem 1.5rem",
+            background: "var(--primary)",
+            color: "white",
+            border: "none",
+            borderRadius: "0.5rem",
+            cursor: "pointer",
           }}
         >
           Refresh Page

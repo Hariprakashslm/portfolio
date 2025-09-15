@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { RefObject } from 'react';
-import { PrismicRichText, PrismicImage } from '@prismicio/react';
-import { RichTextField, ImageField } from '@prismicio/client';
+import styled from "styled-components";
+import { RefObject } from "react";
+import { PrismicRichText, PrismicImage } from "@prismicio/react";
+import { RichTextField, ImageField } from "@prismicio/client";
 
 const ProjectSection = styled.section`
   padding: var(--spacing-3xl) var(--spacing-xl);
@@ -21,7 +21,7 @@ const ProjectSection = styled.section`
   justify-content: center;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -37,7 +37,7 @@ const ProjectSection = styled.section`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
@@ -99,7 +99,7 @@ const ProjectCard = styled.div<{ dataindex: number }>`
   animation-delay: ${(props) => props.dataindex * 0.2}s;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -116,7 +116,7 @@ const ProjectCard = styled.div<{ dataindex: number }>`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -171,7 +171,7 @@ const ImageSection = styled.div`
   );
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -350,7 +350,7 @@ const ProjectLink = styled.a`
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -415,6 +415,7 @@ const Projects = ({
   sectionRef: RefObject<HTMLDivElement>;
   data: any;
 }) => {
+  console.log("data.project_group => ", data.project_group);
   // Check if data exists and has the expected structure
   if (!data || !data.project_group) {
     return (
@@ -424,9 +425,9 @@ const Projects = ({
         <ProjectContainer>
           <div
             style={{
-              textAlign: 'center',
-              padding: '2rem',
-              color: 'rgba(255, 255, 255, 0.6)',
+              textAlign: "center",
+              padding: "2rem",
+              color: "rgba(255, 255, 255, 0.6)",
             }}
           >
             No projects data available at the moment.
@@ -472,15 +473,15 @@ const Projects = ({
                     ) : (
                       <div
                         style={{
-                          width: '100%',
-                          height: '100%',
+                          width: "100%",
+                          height: "100%",
                           background:
-                            'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2))',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'rgba(255, 255, 255, 0.6)',
-                          fontSize: '0.9rem',
+                            "linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2))",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "rgba(255, 255, 255, 0.6)",
+                          fontSize: "0.9rem",
                         }}
                       >
                         No Image
@@ -518,33 +519,9 @@ const Projects = ({
                         <PrismicRichText
                           field={tech}
                           components={{
-                            list: (data) => (
-                              <>
-                                {data.children?.map(
-                                  (item: any, techIndex: number) => {
-                                    const text =
-                                      typeof item.children?.[0] === 'string'
-                                        ? item.children[0]
-                                        : (item.children?.[0] as any)?.text ||
-                                          'Tech';
-                                    return (
-                                      <Tech
-                                        key={techIndex}
-                                        dataindex={techIndex}
-                                      >
-                                        {text}
-                                      </Tech>
-                                    );
-                                  }
-                                )}
-                              </>
-                            ),
+                            list: (data) => <>{data.children}</>,
                             listItem: (data) => {
-                              const text =
-                                typeof data.children?.[0] === 'string'
-                                  ? data.children[0]
-                                  : (data.children?.[0] as any)?.text || 'Tech';
-                              return <Tech dataindex={1}>{text}</Tech>;
+                              return <Tech dataindex={1}>{data.children}</Tech>;
                             },
                           }}
                         />
@@ -556,7 +533,7 @@ const Projects = ({
                         </>
                       )}
                     </TechStack>
-                    <ProjectLinks>
+                    {/* <ProjectLinks>
                       <ProjectLink
                         href="#"
                         target="_blank"
@@ -571,7 +548,7 @@ const Projects = ({
                       >
                         Source Code
                       </ProjectLink>
-                    </ProjectLinks>
+                    </ProjectLinks> */}
                   </ProjectContent>
                 </ProjectCard>
               );

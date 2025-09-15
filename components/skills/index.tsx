@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { RefObject } from 'react';
+import styled from "styled-components";
+import { RefObject } from "react";
 
 const SkillsSection = styled.section`
   padding: var(--spacing-3xl) var(--spacing-xl);
@@ -19,7 +19,7 @@ const SkillsSection = styled.section`
   justify-content: center;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -41,7 +41,7 @@ const AbstractGraphic = styled.div`
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -69,7 +69,7 @@ const AbstractGraphic = styled.div`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 10px;
     left: 10px;
@@ -156,7 +156,7 @@ const SkillChip = styled.div`
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -238,134 +238,137 @@ const DecorativeElement = styled.div`
   }
 `;
 
-// Skill data with icons and colors
 const skillsData = [
   // Frontend
   {
-    name: 'ReactJS',
-    icon: '⚛️',
-    color: 'linear-gradient(135deg, #61dafb, #21d4fd)',
+    name: "ReactJS",
+    icon: "⚛️",
+    color: "linear-gradient(135deg, #61dafb, #21d4fd)",
   },
   {
-    name: 'NextJS',
-    icon: '▲',
-    color: 'linear-gradient(135deg, #000000, #ffffff)',
+    name: "NextJS",
+    icon: "▲",
+    color: "linear-gradient(135deg, #000000, #ffffff)",
   },
   {
-    name: 'TypeScript',
-    icon: 'TS',
-    color: 'linear-gradient(135deg, #3178c6, #235a97)',
+    name: "Angular",
+    icon: "🅰️",
+    color: "linear-gradient(135deg, #dd0031, #c3002f)",
   },
   {
-    name: 'Tailwind',
-    icon: '🎨',
-    color: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+    name: "Redux",
+    icon: "🌀",
+    color: "linear-gradient(135deg, #764abc, #593d88)",
   },
   {
-    name: 'Motion',
-    icon: '✨',
-    color: 'linear-gradient(135deg, #8b5cf6, #a855f7)',
+    name: "Tailwind CSS",
+    icon: "🎨",
+    color: "linear-gradient(135deg, #06b6d4, #0891b2)",
   },
   {
-    name: 'Sanity',
-    icon: 'S',
-    color: 'linear-gradient(135deg, #f97316, #ea580c)',
+    name: "Styled Components",
+    icon: "💅",
+    color: "linear-gradient(135deg, #db7093, #c6538c)",
   },
   {
-    name: 'Contentful',
-    icon: 'C',
-    color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+    name: "Storybook",
+    icon: "📖",
+    color: "linear-gradient(135deg, #ff4785, #d81b60)",
   },
 
   // Backend
   {
-    name: 'Node.JS',
-    icon: '🟢',
-    color: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    name: "Node.js",
+    icon: "🟢",
+    color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
-    name: 'Express.JS',
-    icon: 'ex',
-    color: 'linear-gradient(135deg, #000000, #6b7280)',
+    name: "Express.js",
+    icon: "🚂",
+    color: "linear-gradient(135deg, #000000, #6b7280)",
   },
   {
-    name: 'PostgreSQL',
-    icon: '🐘',
-    color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+    name: "NestJS",
+    icon: "🛡️",
+    color: "linear-gradient(135deg, #e0234e, #b5173a)",
   },
   {
-    name: 'MongoDB',
-    icon: '🍃',
-    color: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    name: "Microservices",
+    icon: "🧩",
+    color: "linear-gradient(135deg, #4ade80, #16a34a)",
   },
   {
-    name: 'Prisma',
-    icon: '💎',
-    color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+    name: "MongoDB",
+    icon: "🍃",
+    color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
-    name: 'Zustand',
-    icon: '🐻',
-    color: 'linear-gradient(135deg, #ec4899, #db2777)',
+    name: "MySQL",
+    icon: "🐬",
+    color: "linear-gradient(135deg, #00758f, #1d4ed8)",
   },
   {
-    name: 'Zod',
-    icon: '🔷',
-    color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-  },
-
-  // Tools & DevOps
-  {
-    name: 'pnpm',
-    icon: '📦',
-    color: 'linear-gradient(135deg, #f97316, #ea580c)',
-  },
-  {
-    name: 'Bun',
-    icon: '🐰',
-    color: 'linear-gradient(135deg, #000000, #6b7280)',
-  },
-  {
-    name: 'Git',
-    icon: '📝',
-    color: 'linear-gradient(135deg, #f97316, #ea580c)',
-  },
-  {
-    name: 'GitHub',
-    icon: '🐙',
-    color: 'linear-gradient(135deg, #000000, #6b7280)',
-  },
-  {
-    name: 'Vercel',
-    icon: '▲',
-    color: 'linear-gradient(135deg, #000000, #ffffff)',
-  },
-  {
-    name: 'AWS',
-    icon: '☁️',
-    color: 'linear-gradient(135deg, #22c55e, #16a34a)',
-  },
-  {
-    name: 'Docker',
-    icon: '🐳',
-    color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-  },
-  {
-    name: 'Expo',
-    icon: '▲',
-    color: 'linear-gradient(135deg, #000000, #ffffff)',
+    name: "Redis",
+    icon: "🟥",
+    color: "linear-gradient(135deg, #ef4444, #b91c1c)",
   },
 
-  // Additional
+  // Cloud & DevOps
   {
-    name: 'Clerk',
-    icon: 'C',
-    color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+    name: "AWS",
+    icon: "☁️",
+    color: "linear-gradient(135deg, #ff9900, #ffb84d)",
   },
   {
-    name: 'Linux',
-    icon: '🐧',
-    color: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
+    name: "Docker",
+    icon: "🐳",
+    color: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+  },
+  {
+    name: "ECS",
+    icon: "📦",
+    color: "linear-gradient(135deg, #f97316, #ea580c)",
+  },
+  {
+    name: "Netlify",
+    icon: "🌐",
+    color: "linear-gradient(135deg, #00c7b7, #009e91)",
+  },
+  {
+    name: "CloudWatch",
+    icon: "⏱️",
+    color: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  },
+
+  // CI/CD
+  {
+    name: "GitHub Actions",
+    icon: "⚙️",
+    color: "linear-gradient(135deg, #000000, #6b7280)",
+  },
+
+  // Tools & Testing
+  {
+    name: "Postman",
+    icon: "📮",
+    color: "linear-gradient(135deg, #ef5b25, #d9461f)",
+  },
+  {
+    name: "Swagger",
+    icon: "📑",
+    color: "linear-gradient(135deg, #85ea2d, #5f9e1f)",
+  },
+  {
+    name: "SonarQube",
+    icon: "📊",
+    color: "linear-gradient(135deg, #00b4d8, #0077b6)",
+  },
+
+  // Version Control
+  {
+    name: "Git",
+    icon: "📝",
+    color: "linear-gradient(135deg, #f97316, #ea580c)",
   },
 ];
 
